@@ -38,7 +38,7 @@ public class CameraBobbing : MonoBehaviour {
 	void Update () {
 		timeElapsed += Time.deltaTime;
 
-		//FactorSpeed ();
+		FactorSpeed ();
 
 		if (timeElapsed >= BobbingIntervals) {
 			RandomBobbing ();
@@ -63,7 +63,7 @@ public class CameraBobbing : MonoBehaviour {
 				transform.Translate(0, -BobSpeed * Time.deltaTime, 0);
 			}
 
-			if (Mathf.Abs(bobValue - amountBobbed) < 5) {
+			if ((Mathf.Abs(bobValue - amountBobbed) < 5) || (amountBobbed > bobValue)) {
 				amountBobbed = bobValue;
 			}
 		} 
@@ -153,10 +153,10 @@ public class CameraBobbing : MonoBehaviour {
 
 		if(currentspeed != 0)
 		{
-			BobbingIntervals = 1 + (currentspeed / 1500);
+			BobbingIntervals = (currentspeed / 1774.4f);
 
-			MaxBobRange = (initialMaxRange * (currentspeed / 1500));
-			MinBobRange = (initialMinRange * (currentspeed / 1500));
+			MaxBobRange = initialMaxRange - (initialMaxRange * (1 - (currentspeed / 1774.4f)));
+			MinBobRange = initialMinRange - (initialMinRange * (1 - (currentspeed / 1774.4f)));
 		}
 	}
 }
