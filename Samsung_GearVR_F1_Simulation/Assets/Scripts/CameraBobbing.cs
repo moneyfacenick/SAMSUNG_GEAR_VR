@@ -11,7 +11,7 @@ public class CameraBobbing : MonoBehaviour {
 	float initialY;
 	float initialMaxRange;
 	float initialMinRange;
-	public float timeElapsed;
+	float timeElapsed;
 	float bobValue;
 	float amountBobbed;
 

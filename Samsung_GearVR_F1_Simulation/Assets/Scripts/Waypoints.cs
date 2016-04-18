@@ -4,60 +4,34 @@ using System.Collections.Generic;
 
 public class Waypoints : MonoBehaviour {
 
-    public AudioClip Acceleration;
-    public AudioClip AccelerationPeak;
-
-    private AudioSource source;
-
-	private Transform CameraTransform;
-
-	private Vector3 Direction;
-
-	private List<Transform> waypoints;
-
 	public Transform waypoint;
 
 	public int waypointIndex;
 
-	private Quaternion ObjectRotation;
+	List<Transform> waypoints;
+
+	Vector3 Direction;
+
+	public Quaternion ObjectRotation;
 
 	float rotationDamping = 6.0f;
-
-	private bool updateWaypoint = true;
-
-    private bool playNext = false;
-
 	float accelaration = 88.0f;
 	float speedLimit = 1774.4f;
 	public float currentSpeed = 0.0f;
+
+	public bool updateWaypoint = true;
 
 	// Use this for initialization
 	void Start () {
 		waypointIndex = 0;
 		GetWayPoint ();
-		CameraTransform = GameObject.FindGameObjectWithTag ("MainCamera").transform;
-        source = GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		UpdateRotate ();
 		Move ();
-        UpdateSound();
 	}
-
-    void UpdateSound()
-    {
-        if (!playNext)
-        {
-            playNext = true;
-            source.PlayOneShot(Acceleration, 1f);
-        }
-        if (!source.isPlaying)
-        {
-            source.PlayOneShot(AccelerationPeak, 1f);
-        }
-    }
 
 	public void OnTriggerEnter(Collider other)
 	{
@@ -83,7 +57,6 @@ public class Waypoints : MonoBehaviour {
 
 	void Move()
 	{
-
 		currentSpeed = currentSpeed + accelaration * accelaration;
 
         if (currentSpeed >= speedLimit)
@@ -110,9 +83,9 @@ public class Waypoints : MonoBehaviour {
 		Direction = waypoint.position - transform.position;
 		Direction.Normalize();
 
-		updateWaypoint = true;
-
 		ObjectRotation = Quaternion.LookRotation (Direction);
+
+		updateWaypoint = true;
 	}
 
 	void GetWayPoint()
