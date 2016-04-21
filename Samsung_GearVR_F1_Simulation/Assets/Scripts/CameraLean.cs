@@ -16,11 +16,14 @@ public class CameraLean : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (waypointscript.updateWaypoint) {
+
+		// Check if the vehicle is currently turning
+		if (waypointscript.GetUpdateWaypoint()) {
 			Vector3 Direction1, Direction2;
 
+			// Checking which direction the vehicle is turning
 			Direction1 = waypointscript.transform.rotation.eulerAngles;
-			Direction2 = waypointscript.ObjectRotation.eulerAngles;
+			Direction2 = waypointscript.GetObjectRotation().eulerAngles;
 
 			if (Direction1.y < Direction2.y) {
 				LeanRight ();
@@ -29,19 +32,25 @@ public class CameraLean : MonoBehaviour {
 				LeanLeft ();
 			}
 		}
+
+		// If the vehicle is not turning
 		else {
 			lean = Quaternion.identity;
 		}
-			
+
+		// Update the camera to lean in either direction or not lean
 		UpdateRotate ();
 	}
 
 	void UpdateRotate()
 	{
+		// Rotate the camera to lean
 		if (Quaternion.Angle (transform.localRotation, lean) > 2.5f) {
 			Quaternion lerpedQuaternion = Quaternion.Lerp (transform.localRotation, lean, Time.deltaTime * rotationDamping);
 			transform.localRotation = lerpedQuaternion;
 		}
+
+		// Check if the rotate is reached
 		if ((Quaternion.Angle (transform.localRotation, lean) < 2.5f) && transform.localRotation != lean) {
 			transform.localRotation = lean;
 		}
