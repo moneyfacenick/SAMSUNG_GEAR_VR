@@ -9,6 +9,7 @@ public class CameraBobbing : MonoBehaviour {
 	public float BobSpeed;
 
 	float initialY;
+	float lastY;
 	float initialMaxRange;
 	float initialMinRange;
 	float timeElapsed;
@@ -20,12 +21,16 @@ public class CameraBobbing : MonoBehaviour {
 	bool sameBob;
 	bool positiveBob;
 
+	Rigidbody body;
+
 	Waypoints waypointscript;
 
 	// Use this for initialization
 	void Start () {
 		waypointscript = gameObject.GetComponent<Waypoints> ();
+		body = gameObject.GetComponent<Rigidbody> ();
 		initialY = transform.position.y;
+		//lastY = initialY;
 		initialMaxRange = MaxBobRange;
 		initialMinRange = MinBobRange;
 		timeElapsed = 0;
@@ -50,7 +55,25 @@ public class CameraBobbing : MonoBehaviour {
 
 	// Movement of the camera to create the bobbing effect
 	void Bob()
-	{
+	{   /*
+		if (amountBobbed != bobValue) {
+			amountBobbed += Mathf.Lerp (amountBobbed, bobValue, BobSpeed * Time.deltaTime);
+
+			if (positiveBob) {
+				body.MovePosition (new Vector3 (transform.position.x, lastY + amountBobbed, transform.position.z));
+			} else {
+				body.MovePosition (new Vector3 (transform.position.x, lastY - amountBobbed, transform.position.z));
+			}
+
+			if (Mathf.Abs (bobValue - amountBobbed) < 5) {
+				amountBobbed = bobValue;
+			}
+		}
+		else {
+
+		}
+		*/
+		
 		// If camera y position not bob enough
 		if (amountBobbed != bobValue) {
 
@@ -86,6 +109,7 @@ public class CameraBobbing : MonoBehaviour {
 				transform.position = position;
 			}
 		}
+
 	}
 
 	// Randoming the bob value
@@ -144,6 +168,8 @@ public class CameraBobbing : MonoBehaviour {
 
 		// Reset amount bobbed since bob value have changed
 		amountBobbed = 0;
+
+		//lastY = transform.position.y;
 	}
 
 	// Factoring in the speed of the vehicle to affect the rate and value of the bobbing effect
