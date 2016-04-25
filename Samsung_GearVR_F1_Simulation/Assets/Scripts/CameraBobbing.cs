@@ -3,7 +3,7 @@ using System.Collections;
 
 public class CameraBobbing : MonoBehaviour {
 
-	public float BobbingIntervals = 1.0f;
+	public float BobbingIntervals;
 	public float MaxBobRange;
 	public float MinBobRange;
 	public float BobSpeed;
@@ -30,7 +30,7 @@ public class CameraBobbing : MonoBehaviour {
 		waypointscript = gameObject.GetComponent<Waypoints> ();
 		body = gameObject.GetComponent<Rigidbody> ();
 		initialY = transform.position.y;
-		//lastY = initialY;
+		lastY = initialY;
 		initialMaxRange = MaxBobRange;
 		initialMinRange = MinBobRange;
 		timeElapsed = 0;
@@ -55,7 +55,8 @@ public class CameraBobbing : MonoBehaviour {
 
 	// Movement of the camera to create the bobbing effect
 	void Bob()
-	{   /*
+	{   
+		// If camera y position not bob enough
 		if (amountBobbed != bobValue) {
 			amountBobbed += Mathf.Lerp (amountBobbed, bobValue, BobSpeed * Time.deltaTime);
 
@@ -69,11 +70,21 @@ public class CameraBobbing : MonoBehaviour {
 				amountBobbed = bobValue;
 			}
 		}
+		// if bob value is reach camera moves towards original y value
 		else {
+			float translateY = Mathf.Lerp(transform.position.y, initialY, BobSpeed * Time.deltaTime);
 
+			body.MovePosition(new Vector3(transform.position.x, translateY, transform.position.z));
+
+			if (Mathf.Abs (initialY - transform.position.y) < 5f) {
+				Vector3 position = body.position;
+				position.y = initialY;
+				body.position = position;
+			}
 		}
-		*/
-		
+
+
+		/*
 		// If camera y position not bob enough
 		if (amountBobbed != bobValue) {
 
@@ -109,7 +120,7 @@ public class CameraBobbing : MonoBehaviour {
 				transform.position = position;
 			}
 		}
-
+		*/
 	}
 
 	// Randoming the bob value
@@ -169,20 +180,20 @@ public class CameraBobbing : MonoBehaviour {
 		// Reset amount bobbed since bob value have changed
 		amountBobbed = 0;
 
-		//lastY = transform.position.y;
+		lastY = transform.position.y;
 	}
 
 	// Factoring in the speed of the vehicle to affect the rate and value of the bobbing effect
 	void FactorSpeed()
 	{
-		float currentspeed = waypointscript.currentSpeed;
+		float currentspeed = body.velocity.magnitude;
 
-		if(currentspeed != 0)
+		if(MaxBobRange != initialMaxRange || currentspeed != 0)
 		{
-			BobbingIntervals = (currentspeed / 1774.4f);
+			BobbingIntervals = 0.5f + (currentspeed / 340.0f);
 
-			MaxBobRange = initialMaxRange - (initialMaxRange * (1 - (currentspeed / 1774.4f)));
-			MinBobRange = initialMinRange - (initialMinRange * (1 - (currentspeed / 1774.4f)));
+			MaxBobRange = 5 + initialMaxRange - (initialMaxRange * (currentspeed / 340.0f));
+			MinBobRange = 5 + initialMinRange - (initialMinRange * (currentspeed / 340.0f));
 		}
 	}
 }
