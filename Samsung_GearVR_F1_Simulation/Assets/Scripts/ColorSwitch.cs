@@ -6,8 +6,10 @@ public class ColorSwitch : MonoBehaviour {
 
 	public List<Color> ColorList;
 
-	Renderer renderer;
-	Material mat;
+	List<Material> materialList;
+
+	//Renderer renderer;
+	//Material mat;
 
 	int currentColorIndex;
 	Color currentColor;
@@ -19,9 +21,18 @@ public class ColorSwitch : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		renderer = GetComponent<Renderer> ();
-		mat = renderer.material;
 
+		materialList = new List<Material> ();
+
+		// Adding the Wheel's material to the list
+		materialList.Add (transform.FindChild ("Wheel").GetComponent<Renderer> ().material);
+
+		// Adding the Capsule's material to the list
+		foreach (Transform child in transform.FindChild("Capsule")) {
+			materialList.Add (child.GetComponent<Renderer> ().material);
+		}
+
+		// Assigning the colors from the inspector
 		for(int i = 0; i < ColorList.Count; ++i)
 		{
 			ColorList [i] = ColorList [i];
@@ -39,10 +50,15 @@ public class ColorSwitch : MonoBehaviour {
 		timeElapsed += Time.deltaTime;
 
 		if (timeElapsed < timeIntervals) {
+
+			// Calculating the color's value based on time pass
 			time += Time.deltaTime / timeIntervals;
 			Color FinalColor = Color.Lerp (currentColor, nextColor, time);
 
-			mat.SetColor ("_EmissionColor", FinalColor);
+			// Setting the new emission color to the materials
+			foreach (Material mat in materialList) {
+				mat.SetColor ("_EmissionColor", FinalColor);
+			}
 		}
 
 		else {
@@ -54,6 +70,7 @@ public class ColorSwitch : MonoBehaviour {
 
 	void UpdateNextColor()
 	{
+		// Update to the next color in the color list
 		++currentColorIndex;
 
 		if (currentColorIndex == ColorList.Count) {
