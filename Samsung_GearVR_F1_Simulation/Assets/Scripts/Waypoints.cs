@@ -6,9 +6,9 @@ public class Waypoints : MonoBehaviour {
 
 	public Transform waypoint;
 
-	public int waypointIndex;
+	int waypointIndex;
 
-	public float currentSpeed = 0.0f;
+	float currentSpeed = 0.0f;
 
 	List<Transform> waypoints;
 
