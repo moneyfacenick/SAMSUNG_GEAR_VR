@@ -33,6 +33,9 @@ public class Move : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
+		Accelerate ();
+		body.drag = 0.0001f;
+		/*
 		if (Input.GetAxis ("Vertical") > 0) {
 			Accelerate ();
 			body.drag = 0.0001f;
@@ -42,8 +45,11 @@ public class Move : MonoBehaviour {
 		} else if (Input.GetKey (KeyCode.Space)) {
 			Brake ();
 		} else {
+			if (body.velocity.normalized != waypointScript.GetDirection ()) {
+				UpdateVelocityDirection ();
+			}
 			body.drag = 0.2f;
-		}
+		}*/
 
 		// Calculate the current rpm based on the vehicle speed and gear
 		rpm = (body.velocity.magnitude / speedCap [currentGear - 1]) * 15000;
@@ -73,7 +79,7 @@ public class Move : MonoBehaviour {
 		float finalAcceleration = -((constantAccelerate + 0.1f) - ((rpm / 15000) * constantAccelerate));
 
 		// Calculate the new velocity using the old velocity plus current frame's acceleration
-		Vector3 newVelocity = (waypointScript.GetDirection() * body.velocity.magnitude) - ((waypointScript.GetDirection() * finalAcceleration) * Time.deltaTime);
+		Vector3 newVelocity = body.velocity + ((waypointScript.GetDirection() * finalAcceleration) * Time.deltaTime);
 
 		// Assign the new velocity to the rigidbody
 		body.velocity = newVelocity;
@@ -94,6 +100,19 @@ public class Move : MonoBehaviour {
 			body.velocity = Vector3.zero;
 			body.angularVelocity = Vector3.zero;
 		}
+	}
+
+	void UpdateVelocityDirection()
+	{
+		Vector3 Direction = transform.InverseTransformDirection (body.velocity);
+
+		Vector3 newVelocity;
+		if (Direction.z > 0) {
+			newVelocity = (waypointScript.GetDirection () * body.velocity.magnitude);
+		} else {
+			newVelocity = (-waypointScript.GetDirection () * body.velocity.magnitude);
+		}
+		body.velocity = newVelocity;
 	}
 
 	void ShiftGears()

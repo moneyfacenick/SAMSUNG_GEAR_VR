@@ -192,8 +192,8 @@ public class CameraBobbing : MonoBehaviour {
 		{
 			BobbingIntervals = 0.5f + (currentspeed / 340.0f);
 
-			MaxBobRange = 5 + initialMaxRange - (initialMaxRange * (currentspeed / 340.0f));
-			MinBobRange = 5 + initialMinRange - (initialMinRange * (currentspeed / 340.0f));
+			MaxBobRange = 1f + initialMaxRange - (initialMaxRange * (currentspeed / 340.0f));
+			MinBobRange = 0.1f + initialMinRange - (initialMinRange * (currentspeed / 340.0f));
 		}
 	}
 }
