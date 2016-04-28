@@ -1,0 +1,291 @@
+fileFormatVersion: 2
+guid: 5710a614dda946f419eefda398942871
+timeCreated: 1461737743
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: IRS1:IRS1:pCube20
+    100002: IRS1:IRS:pCube2
+    100004: IRS1:IRS:pCube3
+    100006: IRS1:IRS:pCube4
+    100008: IRS1:IRS:transform1
+    100010: IRS1:IRS:transform2
+    100012: IRS1:IRS:transform3
+    100014: IRS1:pCube10
+    100016: IRS1:pCube11
+    100018: IRS1:pCube12
+    100020: IRS1:pCube17
+    100022: IRS1:pCube18
+    100024: IRS1:pCube2
+    100026: IRS1:pCube3
+    100028: IRS1:pCube4
+    100030: IRS1:polySurface11
+    100032: IRS1:polySurface11 1
+    100034: IRS1:polySurface12
+    100036: IRS1:polySurface13
+    100038: IRS1:polySurface14
+    100040: IRS1:polySurface16
+    100042: IRS1:polySurface17
+    100044: IRS1:polySurface18
+    100046: IRS1:polySurface19
+    100048: IRS1:polySurface19 1
+    100050: IRS1:polySurface2
+    100052: IRS1:polySurface2 1
+    100054: IRS1:polySurface20
+    100056: IRS1:polySurface4
+    100058: IRS1:polySurface7
+    100060: IRS1:polySurface8
+    100062: IRS1:polySurface8 1
+    100064: IRS1:transform1
+    100066: IRS1:transform10
+    100068: IRS1:transform11
+    100070: IRS1:transform12
+    100072: IRS1:transform13
+    100074: IRS1:transform14
+    100076: IRS1:transform15
+    100078: IRS1:transform16
+    100080: IRS1:transform17
+    100082: IRS1:transform18
+    100084: IRS1:transform19
+    100086: IRS1:transform2
+    100088: IRS1:transform20
+    100090: IRS1:transform21
+    100092: IRS1:transform22
+    100094: IRS1:transform23
+    100096: IRS1:transform24
+    100098: IRS1:transform25
+    100100: IRS1:transform3
+    100102: IRS1:transform4
+    100104: IRS1:transform5
+    100106: IRS1:transform6
+    100108: IRS1:transform7
+    100110: IRS1:transform8
+    100112: IRS1:transform9
+    100114: IRS:pCube2
+    100116: IRS:pCube3
+    100118: IRS:pCube4
+    100120: IRS:transform1
+    100122: IRS:transform2
+    100124: IRS:transform3
+    100126: MBS_LOD1:IRS:pCube2
+    100128: MBS_LOD1:IRS:pCube3
+    100130: MBS_LOD1:IRS:pCube4
+    100132: MBS_LOD1:IRS:transform1
+    100134: MBS_LOD1:IRS:transform2
+    100136: MBS_LOD1:IRS:transform3
+    100138: MBS_LOD1:pCube2
+    100140: MBS_LOD1:pCube3
+    100142: MBS_LOD1:pCube4
+    100144: MBS_LOD1:transform1
+    100146: MBS_LOD1:transform2
+    100148: MBS_LOD1:transform3
+    100150: //RootNode
+    100152: pCube10
+    100154: pCube11
+    100156: pCube12
+    100158: pCube2
+    100160: pCube3
+    100162: pCube4
+    100164: polySurface11
+    100166: polySurface11 1
+    100168: polySurface12
+    100170: polySurface13
+    100172: polySurface2
+    100174: polySurface2 1
+    100176: polySurface4
+    100178: polySurface7
+    100180: polySurface8
+    100182: polySurface8 1
+    100184: transform1
+    100186: transform10
+    100188: transform11
+    100190: transform12
+    100192: transform13
+    100194: transform14
+    100196: transform15
+    100198: transform16
+    100200: transform2
+    100202: transform3
+    100204: transform4
+    100206: transform5
+    100208: transform6
+    100210: transform7
+    100212: transform8
+    100214: transform9
+    400000: IRS1:IRS1:pCube20
+    400002: IRS1:IRS:pCube2
+    400004: IRS1:IRS:pCube3
+    400006: IRS1:IRS:pCube4
+    400008: IRS1:IRS:transform1
+    400010: IRS1:IRS:transform2
+    400012: IRS1:IRS:transform3
+    400014: IRS1:pCube10
+    400016: IRS1:pCube11
+    400018: IRS1:pCube12
+    400020: IRS1:pCube17
+    400022: IRS1:pCube18
+    400024: IRS1:pCube2
+    400026: IRS1:pCube3
+    400028: IRS1:pCube4
+    400030: IRS1:polySurface11
+    400032: IRS1:polySurface11 1
+    400034: IRS1:polySurface12
+    400036: IRS1:polySurface13
+    400038: IRS1:polySurface14
+    400040: IRS1:polySurface16
+    400042: IRS1:polySurface17
+    400044: IRS1:polySurface18
+    400046: IRS1:polySurface19
+    400048: IRS1:polySurface19 1
+    400050: IRS1:polySurface2
+    400052: IRS1:polySurface2 1
+    400054: IRS1:polySurface20
+    400056: IRS1:polySurface4
+    400058: IRS1:polySurface7
+    400060: IRS1:polySurface8
+    400062: IRS1:polySurface8 1
+    400064: IRS1:transform1
+    400066: IRS1:transform10
+    400068: IRS1:transform11
+    400070: IRS1:transform12
+    400072: IRS1:transform13
+    400074: IRS1:transform14
+    400076: IRS1:transform15
+    400078: IRS1:transform16
+    400080: IRS1:transform17
+    400082: IRS1:transform18
+    400084: IRS1:transform19
+    400086: IRS1:transform2
+    400088: IRS1:transform20
+    400090: IRS1:transform21
+    400092: IRS1:transform22
+    400094: IRS1:transform23
+    400096: IRS1:transform24
+    400098: IRS1:transform25
+    400100: IRS1:transform3
+    400102: IRS1:transform4
+    400104: IRS1:transform5
+    400106: IRS1:transform6
+    400108: IRS1:transform7
+    400110: IRS1:transform8
+    400112: IRS1:transform9
+    400114: IRS:pCube2
+    400116: IRS:pCube3
+    400118: IRS:pCube4
+    400120: IRS:transform1
+    400122: IRS:transform2
+    400124: IRS:transform3
+    400126: MBS_LOD1:IRS:pCube2
+    400128: MBS_LOD1:IRS:pCube3
+    400130: MBS_LOD1:IRS:pCube4
+    400132: MBS_LOD1:IRS:transform1
+    400134: MBS_LOD1:IRS:transform2
+    400136: MBS_LOD1:IRS:transform3
+    400138: MBS_LOD1:pCube2
+    400140: MBS_LOD1:pCube3
+    400142: MBS_LOD1:pCube4
+    400144: MBS_LOD1:transform1
+    400146: MBS_LOD1:transform2
+    400148: MBS_LOD1:transform3
+    400150: //RootNode
+    400152: pCube10
+    400154: pCube11
+    400156: pCube12
+    400158: pCube2
+    400160: pCube3
+    400162: pCube4
+    400164: polySurface11
+    400166: polySurface11 1
+    400168: polySurface12
+    400170: polySurface13
+    400172: polySurface2
+    400174: polySurface2 1
+    400176: polySurface4
+    400178: polySurface7
+    400180: polySurface8
+    400182: polySurface8 1
+    400184: transform1
+    400186: transform10
+    400188: transform11
+    400190: transform12
+    400192: transform13
+    400194: transform14
+    400196: transform15
+    400198: transform16
+    400200: transform2
+    400202: transform3
+    400204: transform4
+    400206: transform5
+    400208: transform6
+    400210: transform7
+    400212: transform8
+    400214: transform9
+    2300000: IRS1:IRS1:pCube20
+    3300000: IRS1:IRS1:pCube20
+    4300000: IRS1:IRS1:pCube20
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
