@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Random = UnityEngine.Random;
 
 public class Waypoints : MonoBehaviour {
 
@@ -13,7 +14,7 @@ public class Waypoints : MonoBehaviour {
 	List<Transform> waypoints;
 
 	Vector3 direction;
-
+    Vector3 RandomPosition;
 	Quaternion objectRotation;
 
 	Rigidbody body;
@@ -87,14 +88,20 @@ public class Waypoints : MonoBehaviour {
 
 	void ChangeNextWaypoint()
 	{
+
 		// Move to next waypoint
-		waypointIndex++;
+        waypointIndex++;
+
 
 		// If have reach the last waypoint go back to the beginning
 		if (waypointIndex >= waypoints.Count) {
 			waypointIndex = 0;
 		}
 
+        Debug.Log("Before: " + waypoints[waypointIndex].position);
+        // To random waypoint
+        waypoints[waypointIndex].position = new Vector3(waypoints[waypointIndex].position.x + Random.Range(-5,5), waypoints[waypointIndex].position.y, waypoints[waypointIndex].position.z);
+        Debug.Log("After: " + waypoints[waypointIndex].position);
 		// Update the waypoint to the next one
 		waypoint = waypoints [waypointIndex];
 
