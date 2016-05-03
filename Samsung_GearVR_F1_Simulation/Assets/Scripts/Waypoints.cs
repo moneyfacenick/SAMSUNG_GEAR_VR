@@ -98,10 +98,8 @@ public class Waypoints : MonoBehaviour {
 			waypointIndex = 0;
 		}
 
-        Debug.Log("Before: " + waypoints[waypointIndex].position);
         // To random waypoint
         waypoints[waypointIndex].position = new Vector3(waypoints[waypointIndex].position.x + Random.Range(-5,5), waypoints[waypointIndex].position.y, waypoints[waypointIndex].position.z);
-        Debug.Log("After: " + waypoints[waypointIndex].position);
 		// Update the waypoint to the next one
 		waypoint = waypoints [waypointIndex];
 
