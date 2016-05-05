@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
 using Random = UnityEngine.Random;
@@ -35,7 +36,6 @@ public class Waypoints : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		//Move ();
 	}
 
 	void FixedUpdate() {
@@ -96,6 +96,7 @@ public class Waypoints : MonoBehaviour {
 		// If have reach the last waypoint go back to the beginning
 		if (waypointIndex >= waypoints.Count) {
 			waypointIndex = 0;
+			SceneManager.LoadScene ("StartScreen");
 		}
 
         // To random waypoint
