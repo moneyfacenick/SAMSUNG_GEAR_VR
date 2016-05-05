@@ -1,10 +1,14 @@
 fileFormatVersion: 2
 guid: c63aa3bf30810a549820441d683faef2
-timeCreated: 1461826639
+timeCreated: 1462413853
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - lowAccelClip: {fileID: 8300000, guid: c0a896ff43b5c8e4e8bcc8144bb05f8f, type: 3}
+  - lowDecelClip: {fileID: 8300000, guid: 8e952145193ae56408f586f84ef6d7d1, type: 3}
+  - highAccelClip: {fileID: 8300000, guid: 6de5a5c90f773ae4f8f3274e0d5699e7, type: 3}
+  - highDecelClip: {fileID: 8300000, guid: ab4acf4fc3d3f744599a6b6af539e20b, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

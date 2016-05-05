@@ -6,7 +6,6 @@ public class EngineSound : MonoBehaviour
 {
     public enum EngineAudioOptions // Options for the engine audio
     {
-        Simple, // Simple style audio
         FourChannel // four Channel audio
     }
 
@@ -19,9 +18,9 @@ public class EngineSound : MonoBehaviour
     public float lowPitchMin = 1f;                                              // The lowest possible pitch for the low sounds
     public float lowPitchMax = 6f;                                              // The highest possible pitch for the low sounds
     public float highPitchMultiplier = 0.25f;                                   // Used for altering the pitch of high sounds
-    public float maxRolloffDistance = 500;                                      // The maximum distance where rollof starts to take place
-    public float dopplerLevel = 1;                                              // The mount of doppler effect used in the audio
-    public bool useDoppler = true;                                              // Toggle for using doppler
+    public float maxRolloffDistance = 500;                                      // The maximum distance where rollof starts to take place                                         // The mount of doppler effect used in the audio
+    public bool useDoppler = false;                                              // Toggle for using doppler
+    public bool startedSound = false;
 
     private AudioSource m_LowAccel; // Source for the low acceleration sounds
     private AudioSource m_LowDecel; // Source for the low deceleration sounds
@@ -79,8 +78,10 @@ public class EngineSound : MonoBehaviour
 
         if (m_StartedSound)
         {
+
+            startedSound = true;
             // The pitch is interpolated between the min and max values, according to the car's revs.
-            float pitch = ULerp(lowPitchMin, lowPitchMax, m_CarController.GetRPM());
+            float pitch = Mathf.Lerp(lowPitchMin, lowPitchMax, (m_CarController.GetRPM() * 0.00001f) * 4);
 
             // clamp to minimum pitch (note, not clamped to max for high revs while burning out)
             //pitch = Mathf.Min(lowPitchMax, pitch);
@@ -93,11 +94,11 @@ public class EngineSound : MonoBehaviour
                 m_HighDecel.pitch = pitch * highPitchMultiplier * pitchMultiplier;
 
                 // get values for fading the sounds based on the acceleration
-                float accFade = Mathf.Abs(m_CarController.constantAccelerate);
+                float accFade = Mathf.Abs((m_CarController.constantAccelerate / 88));
                 float decFade = 1 - accFade;
 
                 // get the high fade value based on the cars revs
-                float highFade = Mathf.InverseLerp(0.2f, 0.8f, m_CarController.GetRPM());
+                float highFade = Mathf.InverseLerp(0, 1, (m_CarController.GetRPM() * 0.00001f));
                 float lowFade = 1 - highFade;
 
                 // adjust the values to be more realistic
@@ -111,12 +112,6 @@ public class EngineSound : MonoBehaviour
                 m_LowDecel.volume = lowFade * decFade;
                 m_HighAccel.volume = highFade * accFade;
                 m_HighDecel.volume = highFade * decFade;
-
-                // adjust the doppler levels
-                m_HighAccel.dopplerLevel = useDoppler ? dopplerLevel : 0;
-                m_LowAccel.dopplerLevel = useDoppler ? dopplerLevel : 0;
-                m_HighDecel.dopplerLevel = useDoppler ? dopplerLevel : 0;
-                m_LowDecel.dopplerLevel = useDoppler ? dopplerLevel : 0;
         }
     }
 
