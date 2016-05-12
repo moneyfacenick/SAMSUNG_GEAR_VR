@@ -8,9 +8,6 @@ public class ColorSwitch : MonoBehaviour {
 
 	List<Material> materialList;
 
-	//Renderer renderer;
-	//Material mat;
-
 	int currentColorIndex;
 	Color currentColor;
 	Color nextColor;
