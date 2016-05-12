@@ -28,7 +28,7 @@ public class RevMeter : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		// Calculating the angle to rotate based on RPM
-		float rotateResult = MaxRotate * (MoveScript.GetRPM() / 15000);
+		float rotateResult = MaxRotate * (MoveScript.GetRPM() / MoveScript.GetMaxRPM());
 
 		// Assigning the rotation to the needle
 		needleRotate.eulerAngles = new Vector3 (0, 0, -rotateResult + 54);

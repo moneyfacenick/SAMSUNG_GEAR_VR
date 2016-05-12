@@ -7,6 +7,7 @@ public class Move : MonoBehaviour {
 	public List<float> speedCap;
 
 	public float constantAccelerate;
+	public float maxRPM;
 	float rpm;
 	float brakeDecceleration;
 
@@ -52,7 +53,7 @@ public class Move : MonoBehaviour {
 		}*/
 
 		// Calculate the current rpm based on the vehicle speed and gear
-		rpm = (body.velocity.magnitude / speedCap [currentGear - 1]) * 15000;
+		rpm = (body.velocity.magnitude / speedCap [currentGear - 1]) * maxRPM;
 
 		// Shift gears based on rpm
 		ShiftGears ();
@@ -63,7 +64,7 @@ public class Move : MonoBehaviour {
 		if (body.velocity.magnitude < 340) {
 
 			// Calculate the amount of acceleration based on current rpm
-			float finalAcceleration = (constantAccelerate + 0.1f) - ((rpm / 15000) * constantAccelerate);
+			float finalAcceleration = (constantAccelerate + 0.1f) - ((rpm / maxRPM) * constantAccelerate);
 
 			// Calculate the new velocity using the old velocity plus current frame's acceleration
 			Vector3 newVelocity = (waypointScript.GetDirection() * body.velocity.magnitude) + ((waypointScript.GetDirection() * finalAcceleration) * Time.deltaTime);
@@ -76,7 +77,7 @@ public class Move : MonoBehaviour {
 	void Decelerate() 
 	{
 		// Calculate the amount of acceleration based on current rpm
-		float finalAcceleration = -((constantAccelerate + 0.1f) - ((rpm / 15000) * constantAccelerate));
+		float finalAcceleration = -((constantAccelerate + 0.1f) - ((rpm / maxRPM) * constantAccelerate));
 
 		// Calculate the new velocity using the old velocity plus current frame's acceleration
 		Vector3 newVelocity = body.velocity + ((waypointScript.GetDirection() * finalAcceleration) * Time.deltaTime);
@@ -118,20 +119,20 @@ public class Move : MonoBehaviour {
 	void ShiftGears()
 	{
 		// If rpm have reach or is over rev limit and there are still gears left to shiftup 
-		if (rpm >= 15000 && currentGear != speedCap.Count) {
+		if (rpm >= maxRPM && currentGear != speedCap.Count) {
 			++currentGear;
-			rpm = (body.velocity.magnitude / speedCap [currentGear - 1]) * 15000;
+			rpm = (body.velocity.magnitude / speedCap [currentGear - 1]) * maxRPM;
 		}
 
 		// If rpm have reach or is over rev limit cap the rpm
-		else if (rpm > 15000 && currentGear == speedCap.Count) {
-			rpm = 15000;
+		else if (rpm > maxRPM && currentGear == speedCap.Count) {
+			rpm = maxRPM;
 		}
 
 		// If rpm is low enough to shiftdown
 		else if (rpm < 13000 && currentGear != 1) {
 			--currentGear;
-			rpm = (body.velocity.magnitude / speedCap [currentGear - 1]) * 15000;
+			rpm = (body.velocity.magnitude / speedCap [currentGear - 1]) * maxRPM;
 		}
 	}
 
@@ -141,5 +142,9 @@ public class Move : MonoBehaviour {
 
 	public int GetGear(){
 		return currentGear;
+	}
+
+	public float GetMaxRPM(){
+		return maxRPM;
 	}
 }
