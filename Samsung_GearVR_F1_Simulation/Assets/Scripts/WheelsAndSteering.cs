@@ -54,21 +54,21 @@ public class WheelsAndSteering : MonoBehaviour {
 			Quaternion lerpedQuaternion = Quaternion.Lerp (LeftWheel.transform.localRotation, wheelsRotation, Time.deltaTime * rotationDamping);
 			LeftWheel.transform.localRotation = lerpedQuaternion;
 			RightWheel.transform.localRotation = lerpedQuaternion;
-		}
-			
-		if ((Quaternion.Angle (LeftWheel.transform.localRotation, wheelsRotation) < 2.5f) && LeftWheel.transform.localRotation != wheelsRotation) {
-			LeftWheel.transform.localRotation = wheelsRotation;
-			RightWheel.transform.localRotation = wheelsRotation;
+
+			if ((Quaternion.Angle (LeftWheel.transform.localRotation, wheelsRotation) < 2.5f) && LeftWheel.transform.localRotation != wheelsRotation) {
+				LeftWheel.transform.localRotation = wheelsRotation;
+				RightWheel.transform.localRotation = wheelsRotation;
+			}
 		}
 
 		if (Quaternion.Angle (SteeringWheel.transform.localRotation, steeringRotation) > 2.5f) {
 
 			Quaternion lerpedQuaternion = Quaternion.Lerp (SteeringWheel.transform.localRotation, steeringRotation, Time.deltaTime * rotationDamping);
 			SteeringWheel.transform.localRotation = lerpedQuaternion;
-		}
 
-		if ((Quaternion.Angle (SteeringWheel.transform.localRotation, steeringRotation) < 2.5f) && LeftWheel.transform.localRotation != steeringRotation) {
-			SteeringWheel.transform.localRotation = steeringRotation;
+			if ((Quaternion.Angle (SteeringWheel.transform.localRotation, steeringRotation) < 2.5f) && LeftWheel.transform.localRotation != steeringRotation) {
+				SteeringWheel.transform.localRotation = steeringRotation;
+			}
 		}
 	}
 }
