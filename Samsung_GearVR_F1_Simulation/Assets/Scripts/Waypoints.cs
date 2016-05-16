@@ -88,10 +88,8 @@ public class Waypoints : MonoBehaviour {
 
 	void ChangeNextWaypoint()
 	{
-
 		// Move to next waypoint
         waypointIndex++;
-
 
 		// If have reach the last waypoint go back to the beginning
 		if (waypointIndex >= waypoints.Count) {
