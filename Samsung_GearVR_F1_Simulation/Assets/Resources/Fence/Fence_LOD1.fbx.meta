@@ -1,0 +1,143 @@
+fileFormatVersion: 2
+guid: 8bba22583ac1a664fa37fc7cf127d822
+timeCreated: 1463466686
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: FullFence6443
+    100004: FullFence6444
+    100006: FullFence6445
+    100008: FullFence6446
+    100010: FullFence6447
+    100012: FullFence6448
+    100014: FullFence6449
+    100016: FullFence6450
+    100018: FullFence6451
+    100020: FullFence6452
+    100022: FullFence6453
+    100024: FullFence6454
+    100026: FullFence6455
+    100028: FullFence6456
+    400000: //RootNode
+    400002: FullFence6443
+    400004: FullFence6444
+    400006: FullFence6445
+    400008: FullFence6446
+    400010: FullFence6447
+    400012: FullFence6448
+    400014: FullFence6449
+    400016: FullFence6450
+    400018: FullFence6451
+    400020: FullFence6452
+    400022: FullFence6453
+    400024: FullFence6454
+    400026: FullFence6455
+    400028: FullFence6456
+    2300000: FullFence6443
+    2300002: FullFence6444
+    2300004: FullFence6445
+    2300006: FullFence6446
+    2300008: FullFence6447
+    2300010: FullFence6448
+    2300012: FullFence6449
+    2300014: FullFence6450
+    2300016: FullFence6451
+    2300018: FullFence6452
+    2300020: FullFence6453
+    2300022: FullFence6454
+    2300024: FullFence6455
+    2300026: FullFence6456
+    3300000: FullFence6443
+    3300002: FullFence6444
+    3300004: FullFence6445
+    3300006: FullFence6446
+    3300008: FullFence6447
+    3300010: FullFence6448
+    3300012: FullFence6449
+    3300014: FullFence6450
+    3300016: FullFence6451
+    3300018: FullFence6452
+    3300020: FullFence6453
+    3300022: FullFence6454
+    3300024: FullFence6455
+    3300026: FullFence6456
+    4300000: FullFence6443
+    4300002: FullFence6444
+    4300004: FullFence6445
+    4300006: FullFence6446
+    4300008: FullFence6447
+    4300010: FullFence6448
+    4300012: FullFence6449
+    4300014: FullFence6450
+    4300016: FullFence6451
+    4300018: FullFence6452
+    4300020: FullFence6453
+    4300022: FullFence6454
+    4300024: FullFence6455
+    4300026: FullFence6456
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
