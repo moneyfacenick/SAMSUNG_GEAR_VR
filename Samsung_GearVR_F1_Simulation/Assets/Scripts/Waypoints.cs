@@ -6,7 +6,7 @@ using Random = UnityEngine.Random;
 
 public class Waypoints : MonoBehaviour {
 
-	public Transform waypoint;
+	public Transform Waypoint;
 
 	int waypointIndex;
 
@@ -23,6 +23,7 @@ public class Waypoints : MonoBehaviour {
 	float rotationDamping = 6.0f;
 	float accelaration = 88.0f;
 	float speedLimit = 1774.4f;
+	float turnSpeedLimit = 0;
 
 	bool updateWaypoint = true;
 
@@ -48,13 +49,24 @@ public class Waypoints : MonoBehaviour {
 		// If collided with a waypoint then switch to the next waypoint
 		if (other.CompareTag("Waypoint")) {
 			ChangeNextWaypoint ();
+
+			if (other.name == "TurnEnd") {
+				turnSpeedLimit = 0;
+			} else if(other.name.Contains("Turn")) {
+				string turnSpeed = string.Empty;
+				for (int i = 4; i < other.name.Length; ++i) {
+					turnSpeed += other.name [i];
+				}
+
+				turnSpeedLimit = float.Parse(turnSpeed);
+			}
 		}
 	}
 		
 	void UpdateRotate()
 	{
 		// If there is a waypoint
-		if (waypoint) {
+		if (Waypoint) {
 
 			// If the waypoint have been updated 
 			if (updateWaypoint) {
@@ -68,22 +80,6 @@ public class Waypoints : MonoBehaviour {
 				}
 			}
 		}
-	}
-
-	// Old
-	void Move()
-	{
-		currentSpeed = currentSpeed + accelaration * accelaration;
-
-        if (currentSpeed >= speedLimit)
-        {
-            currentSpeed = speedLimit;
-        }
-
-		Vector3 waypointPosition = waypoint.position;
-		waypointPosition.y = transform.position.y;
-
-		transform.position = Vector3.MoveTowards(transform.position, waypointPosition, Time.deltaTime * currentSpeed);
 	}
 
 	void ChangeNextWaypoint()
@@ -100,10 +96,10 @@ public class Waypoints : MonoBehaviour {
         // To random waypoint
         waypoints[waypointIndex].position = new Vector3(waypoints[waypointIndex].position.x + Random.Range(-3,3), waypoints[waypointIndex].position.y, waypoints[waypointIndex].position.z);
 		// Update the waypoint to the next one
-		waypoint = waypoints [waypointIndex];
+		Waypoint = waypoints [waypointIndex];
 
 		// Calculate the direction of this waypoint to the next one
-		direction = waypoint.position - transform.position;
+		direction = Waypoint.position - transform.position;
 		direction.y = 0;
 		direction.Normalize();
 
@@ -115,7 +111,7 @@ public class Waypoints : MonoBehaviour {
 
 	void GetWayPoint()
 	{
-		Transform getwaypoints = waypoint.GetComponentInChildren<Transform>();
+		Transform getwaypoints = Waypoint.GetComponentInChildren<Transform>();
 		waypoints = new List<Transform>();
 
 		// Initing the waypoints into the list
@@ -125,10 +121,10 @@ public class Waypoints : MonoBehaviour {
 		}
 
 		// Update the waypoint
-		waypoint = waypoints [waypointIndex];
+		Waypoint = waypoints [waypointIndex];
 
 		// Calculate the direction of this waypoint to the next one
-		direction = waypoint.position - transform.position;
+		direction = Waypoint.position - transform.position;
 		direction.y = 0;
 		direction.Normalize();
 
@@ -149,5 +145,10 @@ public class Waypoints : MonoBehaviour {
 	public Quaternion GetObjectRotation()
 	{
 		return objectRotation;
+	}
+
+	public float GetTurnSpeedLimit()
+	{
+		return turnSpeedLimit;
 	}
 }

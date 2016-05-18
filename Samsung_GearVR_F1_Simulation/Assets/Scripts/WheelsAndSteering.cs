@@ -34,8 +34,6 @@ public class WheelsAndSteering : MonoBehaviour {
 
 		wheelsXRotate += (body.velocity.magnitude / 340.0f) * MaxRotationSpeed * Time.deltaTime;
 
-		//Debug.Log (MaxRotationSpeed * (body.velocity.magnitude / 340.0f));
-
 		if (wheelsXRotate > 360) {
 			wheelsXRotate -= 360;
 		}

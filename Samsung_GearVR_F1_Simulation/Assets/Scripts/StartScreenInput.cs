@@ -3,8 +3,7 @@ using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class StartScreenInput : MonoBehaviour {
-
-	public GameObject cameraObject;
+	
 	Camera camera;
 
 	// Use this for initialization
@@ -14,7 +13,7 @@ public class StartScreenInput : MonoBehaviour {
 		OVRTouchpad.TouchHandler += HandleTouchHandler;
 
 		// Get the camera in the scene
-		camera = cameraObject.GetComponent<Camera> ();
+		camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
 	}
 
 	void HandleTouchHandler(object sender, System.EventArgs e) {
@@ -25,6 +24,10 @@ public class StartScreenInput : MonoBehaviour {
 		// Check if the touch is a single tap
 		if (touchArgs.TouchType == OVRTouchpad.TouchEvent.SingleTap) {
 
+			if (camera == null) {
+				camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+			}
+
 			// Raycast from the camera into the world
 			RaycastHit hit;
 			Ray ray = camera.ScreenPointToRay (new Vector3 (camera.pixelWidth * 0.5f, camera.pixelHeight * 0.5f, 0));
@@ -32,6 +35,7 @@ public class StartScreenInput : MonoBehaviour {
 			// Check if ray cast have hit any ui
 			if (Physics.Raycast (ray, out hit)) {
 				TouchReaction (hit.transform.gameObject);
+				Debug.Log ("Hit");
 			}
 		}
 	}

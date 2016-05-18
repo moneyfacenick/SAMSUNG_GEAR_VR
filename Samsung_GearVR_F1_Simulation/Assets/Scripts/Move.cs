@@ -6,6 +6,7 @@ public class Move : MonoBehaviour {
 
 	public List<float> speedCap;
 
+	public float speedBuffer;
 	public float constantAccelerate;
 	public float maxRPM;
 	float rpm;
@@ -24,7 +25,7 @@ public class Move : MonoBehaviour {
 
 		currentGear = 1;
 
-		brakeDecceleration = 49;
+		brakeDecceleration = 120;
 
 		for (int i = 0; i < speedCap.Count; ++i) {
 			speedCap [i] = speedCap [i];
@@ -34,23 +35,17 @@ public class Move : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
-		Accelerate ();
-		body.drag = 0.0001f;
-		/*
-		if (Input.GetAxis ("Vertical") > 0) {
+		if (waypointScript.GetTurnSpeedLimit () - speedBuffer > body.velocity.magnitude || waypointScript.GetTurnSpeedLimit () == 0) {
 			Accelerate ();
 			body.drag = 0.0001f;
-		} else if (Input.GetAxis ("Vertical") < 0) {
-			Decelerate ();
-			body.drag = 0.0001f;
-		} else if (Input.GetKey (KeyCode.Space)) {
+		} else if (waypointScript.GetTurnSpeedLimit () + speedBuffer < body.velocity.magnitude) {
 			Brake ();
 		} else {
-			if (body.velocity.normalized != waypointScript.GetDirection ()) {
-				UpdateVelocityDirection ();
-			}
-			body.drag = 0.2f;
-		}*/
+			Vector3 newVelocity = (waypointScript.GetDirection() * body.velocity.magnitude);
+
+			// Assign the new velocity to the rigidbody
+			body.velocity = newVelocity;
+		}
 
 		// Calculate the current rpm based on the vehicle speed and gear
 		rpm = (body.velocity.magnitude / speedCap [currentGear - 1]) * maxRPM;
