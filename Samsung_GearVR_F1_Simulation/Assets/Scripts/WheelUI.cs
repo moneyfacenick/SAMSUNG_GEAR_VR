@@ -37,11 +37,16 @@ public class WheelUI : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		// Current gear
 		gearMesh.text = moveScript.GetGear ().ToString();
+
+		// Current speed;
 		speedMesh.text = Mathf.RoundToInt(body.velocity.magnitude).ToString ();
 
+		// Calculate how many leds to light up
 		float rpmPrecent = moveScript.GetRPM () / moveScript.GetMaxRPM ();
 
+		// Switch between materials with and without lights
 		for (int i = 0; i < meshList.Count; ++i) {
 			if (rpmPrecent > 0.3 * (i + 1)) {
 				meshList [i].material = mathWithLight;

@@ -32,6 +32,7 @@ public class WheelsAndSteering : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+		// Calculate wheels rotation forward
 		wheelsXRotate += (body.velocity.magnitude / 340.0f) * MaxRotationSpeed * Time.deltaTime;
 
 		if (wheelsXRotate > 360) {
@@ -69,6 +70,7 @@ public class WheelsAndSteering : MonoBehaviour {
 
 	void UpdateRotate()
 	{
+		// Update wheels rotation
 		if (Quaternion.Angle (LeftWheel.transform.localRotation, wheelsRotation) > 2.5f) {
 			
 			Quaternion lerpedQuaternion = Quaternion.Lerp (LeftWheel.transform.localRotation, wheelsRotation, Time.deltaTime * rotationDamping);
@@ -81,6 +83,7 @@ public class WheelsAndSteering : MonoBehaviour {
 			}
 		}
 
+		// Update back wheel rotation
 		if (Quaternion.Angle (BackWheels.transform.localRotation, forwardWheelsRotation) > 2.5f) {
 
 			Quaternion lerpedQuaternion = Quaternion.Lerp (BackWheels.transform.localRotation, forwardWheelsRotation, Time.deltaTime * rotationDamping);
@@ -91,6 +94,7 @@ public class WheelsAndSteering : MonoBehaviour {
 			}
 		}
 
+		// Update steering wheel rotation
 		if (Quaternion.Angle (SteeringWheel.transform.localRotation, steeringRotation) > 2.5f) {
 
 			Quaternion lerpedQuaternion = Quaternion.Lerp (SteeringWheel.transform.localRotation, steeringRotation, Time.deltaTime * rotationDamping);
